@@ -13,5 +13,4 @@ config["My tests"] = {
         "loaderconf.js"
     ],
     extensions: [require("buster-amd")]
-
 };
