@@ -1,0 +1,8 @@
+{
+    "name": "js-tdd-canvas",
+    "version": "0.0.1",
+    "author": { "name": "Ville Svärd" },
+    "dependencies": {
+        "buster-amd": "0.3.0"
+    }
+}
