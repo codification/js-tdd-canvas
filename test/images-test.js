@@ -4,9 +4,9 @@ define(['images'], function(images) {
             this.errorHandler = this.stub();
             var bad_name = "unknown image";
         },
-        "image path must be known": function () {
+        "elements must be known": function () {
             images.load(this.bad_name, this.errorHandler);
-            assert.calledWith(this.errorHandler, "Unknown image:", this.bad_name);
+            assert.calledWith(this.errorHandler, "Unknown element:", this.bad_name);
         },
         "unknowns are not drawn": function () {
             var drawable = images.load(this.bad_name);
@@ -23,8 +23,15 @@ define(['images'], function(images) {
             var image = images.load("background");
             assert.isFunction(image);
         },
-        "//does not draw until loaded": function() {
-
+        "elements": {
+            "background is a black rectangle": function() {
+                var scrn = {
+                    fill: function() {}
+                };
+                var screen = this.mock(scrn);
+                screen.expects('fill').withArgs('black');
+                images.load("background")(scrn);
+            }
         }
 
     });

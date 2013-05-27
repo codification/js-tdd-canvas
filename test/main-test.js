@@ -1,4 +1,4 @@
-define(['main', 'images'], function (main, images) {
+define(['main', 'images', 'screen'], function (main, images, screen) {
     buster.testCase("main", {
         setUp: function() {
             this.content = document.createElement('div');
@@ -21,16 +21,8 @@ define(['main', 'images'], function (main, images) {
                 assert.greater(canvas.height, 240, "Height");
             }},
         drawing: {
-            "draws background image": function() {
-                var bg = this.mock().once();
-                this.stub(images, "load").returns(bg);
-                main.init(this.content);
-            },
             "draws background image on 2d context": function() {
-                var bg = function(ctx) {
-                    assert.defined(ctx.fillRect);
-                };
-                this.stub(images, "load").returns(bg);
+
                 main.init(this.content);
             }
         }

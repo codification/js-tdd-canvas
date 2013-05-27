@@ -1,4 +1,4 @@
-define(['jquery', 'images'], function($, images) {
+define(['jquery', 'images', 'screen'], function($, images, screen) {
     return {
         init: function(content) {
             var title = document.createElement('h1');
@@ -8,10 +8,11 @@ define(['jquery', 'images'], function($, images) {
             var canvas = document.createElement('canvas');
             canvas.width = 600;
             canvas.height = 480;
-            $ (content).append(canvas);
+            $(content).append(canvas);
 
             var bg = images.load('background', this.errorHandler);
-            bg(canvas.getContext('2d'));
+            var theScreen = screen(canvas);
+            bg(theScreen);
         },
         errorHandler: function() {
             console.log('Error: ', arguments);

@@ -1,9 +1,9 @@
 define([], function() {
-    var undrawable = function(ctx) {
+    var undrawable = function(screen) {
     };
     var elements = {
-        "background": function(ctx) {
-            ctx.fillRect(0,0, ctx.width, ctx.height);
+        "background": function(screen) {
+            screen.fill('black');
         }
     };
 
@@ -14,7 +14,7 @@ define([], function() {
                 return elements[name];
             }
             else {
-                onError("Unknown image:", name);
+                onError("Unknown element:", name);
                 return undrawable;
             }
         }
